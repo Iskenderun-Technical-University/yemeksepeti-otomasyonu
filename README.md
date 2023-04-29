@@ -6,4 +6,4 @@ Bu bir yemek alış-veriş otomasyonudur. Bu otomasyona 'Müşteri' 'Restorant' 
 
 Otomasyon içersinde Müşteriler stokta olması dahilinde yemek ve içecek seçeneklerini sepetlerine ekleyip siparişte bulunabiliyor. Sepette ödeme işlemide tamamlandıktan sonra sistem Çalışanı tarafından yemeğin alınacağı Restoranta bildirimde bulunuyor. Restorant siparişi hazırladıktan sonra kuryeye verilmek üzere yemek sipariş hazır bildirimi yapıyor. Çalışan kuryeye sipariş ve adresleri iletiyor. Kurye bildirimle birlikte adreseki siparişi gitmesi gereken adrese götürmek üzere işlemde bulunuyor. Müşteri ile iletişim sağlanmasıyla birlikte sipariş teslim ediliyor.  
 
-Bu sipariş işlemlerinin hepsi sistem üzerinde bütün bilgileri ile kayıt ediliyor. Admin bu bilgilere ulaşabilip bilgileri görebilir. Admin sisteme yeni Restorant Kurye yada Çalışan ekleme çıkarma yapabilir.Bilgilerini değiştirebilir.s
+Bu sipariş işlemlerinin hepsi sistem üzerinde bütün bilgileri ile kayıt ediliyor. Admin bu bilgilere ulaşabilip bilgileri görebilir. Admin sisteme yeni Restorant Kurye yada Çalışan ekleme çıkarma yapabilir.Bilgilerini değiştirebilir.

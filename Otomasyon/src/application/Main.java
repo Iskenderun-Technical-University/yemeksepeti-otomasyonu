@@ -18,10 +18,12 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.initStyle(StageStyle.UNDECORATED);
 			primaryStage.show();
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	public static void main(String[] args) {
 		launch(args);

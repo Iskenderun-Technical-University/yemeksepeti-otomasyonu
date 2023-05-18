@@ -75,7 +75,6 @@ public class LoginController {
 
     @FXML
     void initialize() {
-
     }
     
 }

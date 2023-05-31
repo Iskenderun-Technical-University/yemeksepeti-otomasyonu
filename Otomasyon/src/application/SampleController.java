@@ -41,22 +41,22 @@ public class SampleController {
     private Button btn_yorum_goster;
 
     @FXML
-    private TableColumn<Kayitlar, Integer> id;
+    private TableColumn<Users, Integer> id;
 
     @FXML
-    private TableColumn<Kayitlar, String> islem;
+    private TableColumn<Users, String> islem;
 
     @FXML
-    private TableView<Kayitlar> kayitlar_table;
+    private TableView<Users> kayitlar_table;
 
     @FXML
-    private TableColumn<Kayitlar, String> kul_adi;
+    private TableColumn<Users, String> kul_adi;
 
     @FXML
-    private TableColumn<Kayitlar, Double> ortalama;
+    private TableColumn<Users, Double> ortalama;
 
     @FXML
-    private TableColumn<Kayitlar, String> secim;
+    private TableColumn<Users, String> secim;
 
     @FXML
     private TextField txt_kul;
@@ -65,22 +65,22 @@ public class SampleController {
     private TextField txt_sifre;
 
     @FXML
-    private TableColumn<Kayitlar, String> yorum;
+    private TableColumn<Users, String> yorum;
     
-    ObservableList<Kayitlar> veriler;
+    ObservableList<Users> veriler;
     Button[] butonlar=new Button[10];
     int id_No=0;
 
     @FXML
     void btn_ekle_Click(ActionEvent event) {
-    	veriler=FXCollections.observableArrayList();
+    	/*veriler=FXCollections.observableArrayList();
     	veriler.add(new Kayitlar(id_No,txt_kul.getText(),Double.parseDouble(txt_sifre.getText()),"Varsayilan",butonlar[id_No]));
-    	kayitlar_table.getItems().addAll(veriler);
+    	kayitlar_table.getItems().addAll(veriler);*/
     }
 
     @FXML
     void btn_goster_Click(ActionEvent event) {
-    	Kayitlar kayit=new Kayitlar();
+    	/*Kayitlar kayit=new Kayitlar();
     	if(kayitlar_table.getSelectionModel().getSelectedIndex()!=-1) {
     		kayit=(Kayitlar) kayitlar_table.getItems().get(kayitlar_table.getSelectionModel().getSelectedIndex());
     		System.out.println("Kullanıcı Adı: "+kayit.getKul_adi()+"\n"+ //
@@ -88,12 +88,12 @@ public class SampleController {
     	}
     	else {
     		System.out.println("Herhangi bir kayıt seçili değil..");
-    	}
+    	}*/
     }
 
     @FXML
     void btn_guncelle_Click(ActionEvent event) {
-    	Kayitlar kayit=new Kayitlar();
+    	/*Kayitlar kayit=new Kayitlar();
     	if(kayitlar_table.getSelectionModel().getSelectedIndex()!=-1) {
     		kayit=(Kayitlar) kayitlar_table.getItems().get(kayitlar_table.getSelectionModel().getSelectedIndex());
     		int idm=kayit.getId();
@@ -104,49 +104,49 @@ public class SampleController {
     	}
     	else {
     		System.out.println("Herhangi bir kayıt seçili değil..");
-    	}
+    	}*/
     }
 
     @FXML
     void btn_secilenler_Click(ActionEvent event) {
     	//CheckBox seçilmiş olansatırların değerlerini alma
-    	for(Kayitlar islem: veriler) {
+    	/*for(Kayitlar islem: veriler) {
     		if(islem.getOnay().isSelected()) {
     			System.out.println("Seçilen: "+islem.getKul_adi());
     		}
-    	}
+    	}*/
     }
 
     @FXML
     void btn_sil_Click(ActionEvent event) {
-    	ObservableList<Kayitlar> secilenKayitlar, tumKayitlar;
+    	/*ObservableList<Kayitlar> secilenKayitlar, tumKayitlar;
     	tumKayitlar=kayitlar_table.getItems();
     	secilenKayitlar=kayitlar_table.getSelectionModel().getSelectedItems();
     	
-    	secilenKayitlar.forEach(tumKayitlar::remove);
+    	secilenKayitlar.forEach(tumKayitlar::remove);*/
     }
 
     @FXML
     void btn_yorum_goster_Click(ActionEvent event) {
     	//Yorum girilmiş kayıtları belirleme
-    	for(Kayitlar islem: veriler) {
+    	/*for(Kayitlar islem: veriler) {
     		if(!islem.getMetin().getText().isEmpty()) {
     			System.out.println("Seçilen: "+islem.getKul_adi());
     		}
-    	}
+    	}*/
     }
 
     @FXML
     void kayitlar_table_Click(MouseEvent event) {
-    	Kayitlar kayit=new Kayitlar();
+    	/*Kayitlar kayit=new Kayitlar();
     	kayit=(Kayitlar) kayitlar_table.getItems().get(kayitlar_table.getSelectionModel().getSelectedIndex());
     	txt_kul.setText(kayit.getKul_adi());
-    	txt_sifre.setText(String.valueOf(kayit.getOrtalama()));
+    	txt_sifre.setText(String.valueOf(kayit.getOrtalama()));*/
     }
 
     @FXML
     void initialize() {
-      for(int i=0; i<butonlar.length; i++) {
+     /* for(int i=0; i<butonlar.length; i++) {
     	  butonlar[i]=new Button();
     	  butonlar[i].setId("btn"+i);
     	  butonlar[i].setOnAction(this::ButonOlayi);
@@ -168,18 +168,18 @@ public class SampleController {
       islem.setCellValueFactory(new PropertyValueFactory<>("buton"));
       yorum.setCellValueFactory(new PropertyValueFactory<>("metin"));
       
-      kayitlar_table.setItems(veriler);
+      kayitlar_table.setItems(veriler);*/
     }
     
     //Butona olay atama
     
     @FXML
     void ButonOlayi(ActionEvent event) {
-    	for(int i=0; i<butonlar.length; i++) {
+    	/*for(int i=0; i<butonlar.length; i++) {
     		if(event.getSource()==butonlar[i]) {
     			System.out.println(i+". butona tıklandı.");
     		}
-        }
+        }*/
     }
 
 }

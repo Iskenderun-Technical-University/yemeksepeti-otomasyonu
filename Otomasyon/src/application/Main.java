@@ -12,9 +12,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("sqlDeneme.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Admin.fxml"));
 			//Scene scene = new Scene(root,321,587);
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,600,525);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			//primaryStage.initStyle(StageStyle.UNDECORATED);

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.sqlDenemeController">
+   <children>
+      <TextField fx:id="txt_userName" layoutX="111.0" layoutY="68.0" promptText="Kullanıcı Adı" />
+      <TextField fx:id="txt_password" layoutX="111.0" layoutY="125.0" promptText="Şifre" />
+      <Button fx:id="btn_Ekle" layoutX="50.0" layoutY="211.0" mnemonicParsing="false" onAction="#btn_Ekle_Click" prefHeight="25.0" prefWidth="76.0" text="Ekle" />
+      <Button fx:id="btn_Sil" layoutX="162.0" layoutY="211.0" mnemonicParsing="false" onAction="#btn_Sil_Click" prefHeight="25.0" prefWidth="76.0" text="Sil" />
+      <Button fx:id="btn_Guncelle" layoutX="272.0" layoutY="211.0" mnemonicParsing="false" onAction="#btn_Guncelle_Click" prefHeight="25.0" prefWidth="76.0" text="Güncelle" />
+      <Button fx:id="btn_Login" layoutX="152.0" layoutY="275.0" mnemonicParsing="false" onAction="#btn_Login_Click" prefHeight="57.0" prefWidth="96.0" text="Login" />
+   </children>
+</AnchorPane>

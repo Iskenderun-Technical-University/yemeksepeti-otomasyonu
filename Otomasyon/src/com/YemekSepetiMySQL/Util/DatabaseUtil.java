@@ -22,46 +22,20 @@ public class DatabaseUtil {
 		}
 	}
 	
-	public static void Select(String userName,String password)
+	public static void Select()
 	{
-		connection=DatabaseUtil.Connect();
-		String sql="select * from login where userName=? and password=?";
-    	
-    	try {
-    		query=connection.prepareStatement(sql);
-    		query.setString(1, userName);
-    		query.setString(2, password);
-    		
-    		ResultSet result=query.executeQuery();
-    		
-    		if(!result.next())
-    		{
-    			System.out.println("Kullanıcı adı veya şifre hatalı");
-    		}
-    		else {
-    			result.getString(1);
-    			System.out.println("User ID: "+result.getString("userID"));
-    			System.out.println("Title: "+result.getString("title"));
-    			System.out.println("Username: "+result.getString("userName"));
-    			System.out.println("Password: "+result.getString("password"));
-    		}
-    	} catch (Exception e) {
-    		System.out.println(e.getMessage().toString());
-    	}
+
 	}
 	
-	public static void Delete(String userName,String password)
+	public static void Delete(Integer userID)
 	{
 		connection=DatabaseUtil.Connect();
-		String sql="delete from login where userName=? and password=?";
+		String sql="delete from login where userID=?";
 		
 		try {
     		query=connection.prepareStatement(sql);
-    		query.setString(1, userName);
-    		query.setString(2, password);
+    		query.setInt(1, userID);
     		query.executeUpdate();
-    		
-    		System.out.println("Kullanıcı silindi : "+userName);
     		
 			} catch (Exception e) {
     		System.out.println(e.getMessage().toString());
@@ -79,8 +53,6 @@ public class DatabaseUtil {
     		query.setString(2, password);
     		query.setString(3, "0");
     		query.executeUpdate();
-    		
-    		System.out.println("Yeni kullanıcı eklendi : "+userName);
     		
     		} catch (Exception e) {
     		System.out.println(e.getMessage().toString());
@@ -105,11 +77,11 @@ public class DatabaseUtil {
     	}
 	}
 	
-	public static String MD5(String pass)
+	public static String MD5(String input)
 	{
 		try {
 			MessageDigest md5=MessageDigest.getInstance("MD5");
-			byte[] encrypted=md5.digest(pass.getBytes());
+			byte[] encrypted=md5.digest(input.getBytes());
 			BigInteger no=new BigInteger(1,encrypted);
 			String hash=no.toString(16);
 			while(hash.length()<32) {

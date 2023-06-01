@@ -49,12 +49,11 @@ public class sqlDenemeController {
 
     @FXML
     void btn_Login_Click(ActionEvent event) {
-    	DatabaseUtil.Select(txt_userName.getText().trim(), txt_password.getText().trim());
+    	DatabaseUtil.Select();
     }
 
     @FXML
     void btn_Sil_Click(ActionEvent event) {
-    	DatabaseUtil.Delete(txt_userName.getText().trim(), txt_password.getText().trim());
     }
 
     @FXML

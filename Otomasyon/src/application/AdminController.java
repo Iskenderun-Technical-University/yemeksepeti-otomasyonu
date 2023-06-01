@@ -118,7 +118,7 @@ public class AdminController {
 
     @FXML
     void btn_delete_Click(ActionEvent event) {
-    	DatabaseUtil.Delete(txt_userName.getText().trim(), DatabaseUtil.MD5(txt_password.getText().trim()));
+    	DatabaseUtil.Delete(Integer.valueOf(txt_ID.getText().trim()));
     }
 
     @FXML

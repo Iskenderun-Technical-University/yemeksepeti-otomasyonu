@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.processPageController">
+   <children>
+      <SplitPane dividerPositions="0.2619047619047619" layoutX="216.0" layoutY="129.0" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="225.0">
+               <children>
+                  <TextField fx:id="txt_search" layoutX="13.0" layoutY="82.0" onAction="#txt_serach_Action" onKeyPressed="#txt_search_Pressed" prefHeight="25.0" prefWidth="178.0" promptText="Aranacak metin ya da Kullanıcı" />
+                  <ComboBox fx:id="combo_user" layoutX="15.0" layoutY="167.0" onAction="#combo_user_Click" prefHeight="17.0" prefWidth="150.0" />
+                  <Label layoutX="13.0" layoutY="138.0" text="Kullanıcı" />
+                  <Label layoutX="62.0" layoutY="218.0" text="TARİH ARALIĞI" />
+                  <DatePicker fx:id="date_start" layoutX="15.0" layoutY="258.0" />
+                  <DatePicker fx:id="date_finish" layoutX="15.0" layoutY="322.0" />
+                  <Label layoutX="15.0" layoutY="241.0" text="Başlangıç" />
+                  <Label layoutX="15.0" layoutY="305.0" text="Bitiş" />
+                  <Label layoutX="76.0" layoutY="37.0" text="ARAMA">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btn_search" layoutX="15.0" layoutY="411.0" mnemonicParsing="false" onAction="#btn_search_Click" prefHeight="25.0" prefWidth="174.0" text="Görüntüle" />
+                  <Button fx:id="btn_clear" layoutX="15.0" layoutY="459.0" mnemonicParsing="false" onAction="#btn_clear_Click" prefHeight="25.0" prefWidth="174.0" text="Temizle" />
+                  <Button fx:id="btn_refresh" layoutX="15.0" layoutY="507.0" mnemonicParsing="false" onAction="#btn_refresh_Click" prefHeight="25.0" prefWidth="174.0" text="Yenile" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tableview_Process" layoutX="135.0" layoutY="90.0" prefHeight="598.0" prefWidth="487.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="col_ID" prefWidth="29.0" text="ID" />
+                      <TableColumn fx:id="col_userName" prefWidth="99.0" text="Kullanıcı" />
+                        <TableColumn fx:id="col_restaurant" prefWidth="108.0" text="Restaurant" />
+                        <TableColumn fx:id="col_buyer" prefWidth="89.0" text="Müşteri" />
+                        <TableColumn fx:id="col_food" prefWidth="70.0" text="Yemek" />
+                        <TableColumn fx:id="col_piece" prefWidth="33.0" text="Adet" />
+                        <TableColumn fx:id="col_price" prefWidth="47.0" text="Fiyat" />
+                        <TableColumn fx:id="col_date" prefWidth="110.0" text="Tarih" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

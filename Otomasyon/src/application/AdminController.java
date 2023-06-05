@@ -15,6 +15,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.sql.*;
@@ -34,6 +36,12 @@ public class AdminController {
 
     @FXML
     private Button btn_add;
+    
+    @FXML
+    private Button btn_clear;
+
+    @FXML
+    private TextArea txtarea_adress;
 
     @FXML
     private Button btn_delete;
@@ -61,6 +69,9 @@ public class AdminController {
 
     @FXML
     private TableColumn<Users, String> col_userName;
+    
+    @FXML
+    private TableColumn<Users, String> col_adress;
 
     @FXML
     private Label lbl_message;
@@ -88,16 +99,15 @@ public class AdminController {
     Button[] buttons=new Button[100];
     int buttonNo=0;
     
-    public void TableFill(TableView table)
+    public void TableFill(String sql)
     {
-    	sql="select *from login";
     	ObservableList<Users> UsersList=FXCollections.observableArrayList();
     	
     	try {
     		query=connection.prepareStatement(sql);
     		ResultSet result=query.executeQuery();
     		while(result.next()) {
-    			UsersList.add(new Users(result.getInt("userID"),result.getInt("title"),result.getString("userName"),result.getString("password"),buttons[buttonNo]));
+    			UsersList.add(new Users(result.getInt("userID"),result.getInt("title"),result.getString("userName"),result.getString("password"),buttons[buttonNo],result.getString("adress")));
     			buttonNo++;
     		}
     		col_ID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -105,7 +115,8 @@ public class AdminController {
     	    col_userName.setCellValueFactory(new PropertyValueFactory<>("userName"));
     	    col_password.setCellValueFactory(new PropertyValueFactory<>("password"));
     	    col_process.setCellValueFactory(new PropertyValueFactory<>("button"));
-    	    table.setItems(UsersList);
+    	    col_adress.setCellValueFactory(new PropertyValueFactory<>("adress"));
+    	    tableview_Admin.setItems(UsersList);
     	} catch(Exception e) {
     		lbl_message.setText(e.getMessage().toString());
     	}
@@ -113,7 +124,7 @@ public class AdminController {
 
     @FXML
     void btn_add_Click(ActionEvent event) {
-    	DatabaseUtil.Add(txt_userName.getText().trim(), DatabaseUtil.MD5(txt_password.getText().trim()));
+    	DatabaseUtil.Add(txt_userName.getText().trim(), DatabaseUtil.MD5(txt_password.getText().trim()),txtarea_adress.getText(),txt_title.getText());
     }
 
     @FXML
@@ -123,17 +134,48 @@ public class AdminController {
 
     @FXML
     void btn_refresh_Click(ActionEvent event) {
-    	TableFill(tableview_Admin);
+    	sql="select * from login";
+    	TableFill(sql);
     }
 
     @FXML
     void btn_search_Click(ActionEvent event) {
-
+    	sql="select * from login where userName like'%"+txt_userName.getText()+"%'";
+    	TableFill(sql);
+    }
+    
+    @FXML
+    void btn_clear_Click(ActionEvent event) {
+    	txt_ID.clear();
+    	txt_title.clear();
+    	txt_userName.clear();
+    	txt_password.clear();
+    	txtarea_adress.clear();
     }
 
     @FXML
     void btn_update_Click(ActionEvent event) {
-    	DatabaseUtil.Update(txt_userName.getText().trim(), DatabaseUtil.MD5(txt_password.getText().trim()));
+    	connection=DatabaseUtil.Connect();
+    	sql="select * from login where userID=?";
+    	try {
+    		query=connection.prepareStatement(sql);;
+    		query.setInt(1, Integer.valueOf(txt_ID.getText()));
+    		result=query.executeQuery();
+    		
+    		if(result.next()) 
+    		{
+    			if(result.getString("userName")!=txt_userName.getText())
+    				DatabaseUtil.Update("update login set userName='"+txt_userName.getText()+"' where userID='"+Integer.valueOf(txt_ID.getText())+"'");
+    			if(result.getString("password")!=DatabaseUtil.MD5(txt_password.getText()))
+    				DatabaseUtil.Update("update login set password='"+DatabaseUtil.MD5(txt_password.getText())+"' where userID='"+Integer.valueOf(txt_ID.getText())+"'");
+    			if(result.getString("adress")!=txtarea_adress.getText())
+    				DatabaseUtil.Update("update login set adress='"+txtarea_adress.getText()+"' where userID='"+Integer.valueOf(txt_ID.getText())+"'");
+    		}
+    			
+    		
+    		} catch (Exception e) {
+    		System.out.println(e.getMessage().toString());
+    	}
     }
 
     @FXML
@@ -143,25 +185,24 @@ public class AdminController {
     	txt_ID.setText(String.valueOf(usr.getId()));
     	txt_userName.setText(usr.getUserName());
     	txt_password.setText(usr.getPassword());
+    	txtarea_adress.setText(usr.getAdress());
     	if(usr.getTitle()==0) {
     		txt_title.setText("Kullanıcı");
-    	}else if(usr.getTitle()==1) {
-    		txt_title.setText("Çalışan");
-    	}else if(usr.getTitle()==2) {
-    		txt_title.setText("Yönetici");
-    	}
+    	}else if(usr.getTitle()==1)
+    		txt_title.setText("Admin");
     }
 
     @FXML
     void initialize() {
-    	
+    	btn_search.setTooltip(new Tooltip("Kullanıcı adı ile arama yapabilirsiniz."));
     	for(int i=0; i<buttons.length; i++) {
     	buttons[i]=new Button();
       	buttons[i].setId("btn"+i);
       	buttons[i].setOnAction(this::Button);
     	}
     	
-    	TableFill(tableview_Admin);
+    	sql="select * from login";
+    	TableFill(sql);
     }
     
     @FXML

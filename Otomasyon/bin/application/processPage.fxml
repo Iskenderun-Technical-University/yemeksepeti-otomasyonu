@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.processPageController">
+<AnchorPane fx:id="processPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.processPageController">
    <children>
       <SplitPane dividerPositions="0.2619047619047619" layoutX="216.0" layoutY="129.0" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -40,13 +40,12 @@
                   <TableView fx:id="tableview_Process" layoutX="135.0" layoutY="90.0" prefHeight="598.0" prefWidth="487.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="col_ID" prefWidth="29.0" text="ID" />
-                      <TableColumn fx:id="col_userName" prefWidth="99.0" text="Kullanıcı" />
-                        <TableColumn fx:id="col_restaurant" prefWidth="108.0" text="Restaurant" />
-                        <TableColumn fx:id="col_buyer" prefWidth="89.0" text="Müşteri" />
-                        <TableColumn fx:id="col_food" prefWidth="70.0" text="Yemek" />
-                        <TableColumn fx:id="col_piece" prefWidth="33.0" text="Adet" />
-                        <TableColumn fx:id="col_price" prefWidth="47.0" text="Fiyat" />
-                        <TableColumn fx:id="col_date" prefWidth="110.0" text="Tarih" />
+                      <TableColumn fx:id="col_userName" prefWidth="114.0" text="Kullanıcı" />
+                        <TableColumn fx:id="col_restaurant" prefWidth="137.0" text="Restaurant" />
+                        <TableColumn fx:id="col_food" prefWidth="104.0" text="Yemek" />
+                        <TableColumn fx:id="col_piece" prefWidth="44.0" text="Adet" />
+                        <TableColumn fx:id="col_price" prefWidth="72.0" text="Fiyat" />
+                        <TableColumn fx:id="col_date" prefWidth="85.0" text="Tarih" />
                     </columns>
                   </TableView>
                </children>

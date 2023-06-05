@@ -44,9 +44,6 @@ public class processPageController {
     private TableColumn<Process, Integer> col_ID;
 
     @FXML
-    private TableColumn<Process, String> col_buyer;
-
-    @FXML
     private TableColumn<Process, LocalDate> col_date;
 
     @FXML
@@ -138,7 +135,7 @@ public class processPageController {
     	if(txt_search.getText().equals("")) {
     		sql="select * from process";
     	}else {
-    		sql="select * from process where foodName like '%"+txt_search.getText()+"%' or buyerName like '%"+txt_search.getText()+"%' or restaurantName like '%"+txt_search.getText()+"%'";
+    		sql="select * from process where foodName like '%"+txt_search.getText()+"%' or restaurantName like '%"+txt_search.getText()+"%'";
     	}
     	Select(sql);
     }
@@ -175,11 +172,10 @@ public class processPageController {
     		
     		while(result.next())
     		{
-    			ProcessList.add(new Process(result.getInt("processID"),result.getInt("piece"),result.getInt("price"),result.getString("userName"),result.getString("restaurantName"),result.getString("buyerName"),result.getString("foodName"),result.getDate("processDate")));
+    			ProcessList.add(new Process(result.getInt("processID"),result.getInt("piece"),result.getInt("price"),result.getString("userName"),result.getString("restaurantName"),result.getString("foodName"),result.getDate("processDate")));
     		}
     		
     		col_ID.setCellValueFactory(new PropertyValueFactory<>("processID"));
-    		col_buyer.setCellValueFactory(new PropertyValueFactory<>("buyerName"));
     		col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
     		col_food.setCellValueFactory(new PropertyValueFactory<>("foodName"));
     		col_piece.setCellValueFactory(new PropertyValueFactory<>("piece"));
@@ -198,7 +194,6 @@ public class processPageController {
     	sql="select * from process";
     	Select(sql);
     	ComboFill();
-    	
     }
 
 }

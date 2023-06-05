@@ -6,6 +6,16 @@ public class Users {
 	private int title;
 	private String userName;
 	private String password;
+	private String adress;
+	
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
 	private Button button;
 	
 	public int getTitle() {
@@ -52,11 +62,12 @@ public class Users {
 		
 	}
 	
-	Users(int id,int title,String userName,String password,Button button){
+	Users(int id,int title,String userName,String password,Button button,String adress){
 		this.id=id;
 		this.title=title;
 		this.userName=userName;
 		this.password=password;
+		this.adress=adress;
 		
 		this.button=button;
 		this.button.setText("İşlemler");

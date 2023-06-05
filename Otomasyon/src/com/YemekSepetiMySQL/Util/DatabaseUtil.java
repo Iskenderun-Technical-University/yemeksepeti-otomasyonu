@@ -42,16 +42,17 @@ public class DatabaseUtil {
     	}
 	}
 	
-	public static void Add(String userName,String password)
+	public static void Add(String userName,String password,String adress,String title)
 	{
 		connection=DatabaseUtil.Connect();
-		String sql="insert into login(userName, password, title) values(?,?,?)";
+		String sql="insert into login(userName, password, title, adress) values(?,?,?,?)";
 		
 		try {
     		query=connection.prepareStatement(sql);
     		query.setString(1, userName);
     		query.setString(2, password);
-    		query.setString(3, "0");
+    		query.setString(3, title);
+    		query.setString(4, adress);
     		query.executeUpdate();
     		
     		} catch (Exception e) {
@@ -59,19 +60,13 @@ public class DatabaseUtil {
     	}
 	}
 	
-	public static void Update(String userName,String password)
+	public static void Update(String sql)
 	{
 		connection=DatabaseUtil.Connect();
-		String sql="update login set password=? where userName=?";
-		
 		try {
     		query=connection.prepareStatement(sql);
-    		query.setString(2, userName);
-    		query.setString(1, password);
-    		query.executeUpdate();
-    		
-    		System.out.println("Parola değiştirildi.");
-    		
+     		query.executeUpdate();
+     		
     		} catch (Exception e) {
     		System.out.println(e.getMessage().toString());
     	}

@@ -5,17 +5,16 @@ import java.time.LocalDate;
 
 public class Process {
 	private int processID,piece,price;
-	private String userName,restaurantName,buyerName,foodName;
+	private String userName,restaurantName,foodName;
 	private Date date;
 	
-	public Process(int processID,int piece,int price,String userName,String restaurantName,String buyerName,String foodName,Date date)
+	public Process(int processID,int piece,int price,String userName,String restaurantName,String foodName,Date date)
 	{
 		this.processID=processID;
 		this.piece=piece;
 		this.price=price;
 		this.userName=userName;
 		this.restaurantName=restaurantName;
-		this.buyerName=buyerName;
 		this.foodName=foodName;
 		this.date=date;
 	}
@@ -54,12 +53,6 @@ public class Process {
 	}
 	public void setRestaurantName(String restaurantName) {
 		this.restaurantName = restaurantName;
-	}
-	public String getBuyerName() {
-		return buyerName;
-	}
-	public void setBuyerName(String buyerName) {
-		this.buyerName = buyerName;
 	}
 	public String getFoodName() {
 		return foodName;

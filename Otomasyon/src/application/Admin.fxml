@@ -6,10 +6,11 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="520.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminController">
+<AnchorPane prefHeight="482.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminController">
    <children>
       <SplitPane dividerPositions="0.5733590733590733" layoutX="209.0" layoutY="118.0" orientation="VERTICAL" prefHeight="525.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -22,6 +23,7 @@
                       <TableColumn fx:id="col_userName" prefWidth="94.0" text="Kullanıcı Adı" />
                         <TableColumn fx:id="col_password" prefWidth="298.0" text="Şifre" />
                         <TableColumn fx:id="col_process" prefWidth="91.0" text="İşlemler" />
+                        <TableColumn fx:id="col_adress" prefWidth="200.0" text="Adres" />
                     </columns>
                   </TableView>
                </children>
@@ -35,13 +37,16 @@
                   <TextField fx:id="txt_ID" disable="true" layoutX="108.0" layoutY="24.0" promptText="Kullanıcı ID" />
                   <TextField fx:id="txt_title" layoutX="108.0" layoutY="52.0" promptText="Yetki No" />
                   <TextField fx:id="txt_userName" layoutX="108.0" layoutY="80.0" promptText="Kullanıcı Adı" />
-                  <Button fx:id="btn_add" layoutX="321.0" layoutY="24.0" mnemonicParsing="false" onAction="#btn_add_Click" prefHeight="25.0" prefWidth="111.0" text="Ekle" />
-                  <Button fx:id="btn_update" layoutX="321.0" layoutY="52.0" mnemonicParsing="false" onAction="#btn_update_Click" prefHeight="25.0" prefWidth="111.0" text="Güncelle" />
-                  <Button fx:id="btn_delete" layoutX="321.0" layoutY="80.0" mnemonicParsing="false" onAction="#btn_delete_Click" prefHeight="25.0" prefWidth="111.0" text="Sil" />
-                  <Button fx:id="btn_refresh" layoutX="321.0" layoutY="108.0" mnemonicParsing="false" onAction="#btn_refresh_Click" prefHeight="25.0" prefWidth="111.0" text="Yenile" />
-                  <Button fx:id="btn_search" layoutX="321.0" layoutY="136.0" mnemonicParsing="false" onAction="#btn_search_Click" prefHeight="25.0" prefWidth="111.0" text="Ara" />
+                  <Button fx:id="btn_add" layoutX="595.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_add_Click" prefHeight="25.0" prefWidth="111.0" text="Ekle" />
+                  <Button fx:id="btn_update" layoutX="595.0" layoutY="47.0" mnemonicParsing="false" onAction="#btn_update_Click" prefHeight="25.0" prefWidth="111.0" text="Güncelle" />
+                  <Button fx:id="btn_delete" layoutX="595.0" layoutY="75.0" mnemonicParsing="false" onAction="#btn_delete_Click" prefHeight="25.0" prefWidth="111.0" text="Sil" />
+                  <Button fx:id="btn_refresh" layoutX="595.0" layoutY="103.0" mnemonicParsing="false" onAction="#btn_refresh_Click" prefHeight="25.0" prefWidth="111.0" text="Yenile" />
+                  <Button fx:id="btn_search" layoutX="595.0" layoutY="131.0" mnemonicParsing="false" onAction="#btn_search_Click" prefHeight="25.0" prefWidth="111.0" text="Ara" />
                   <PasswordField fx:id="txt_password" layoutX="108.0" layoutY="108.0" promptText="Şifre" />
                   <Label fx:id="lbl_message" layoutX="16.0" layoutY="180.0" />
+                  <TextArea fx:id="txtarea_adress" layoutX="315.0" layoutY="47.0" prefHeight="138.0" prefWidth="228.0" />
+                  <Label layoutX="315.0" layoutY="21.0" text="Adres:" />
+                  <Button fx:id="btn_clear" layoutX="595.0" layoutY="159.0" mnemonicParsing="false" onAction="#btn_clear_Click" prefHeight="25.0" prefWidth="111.0" text="Temizle" />
                </children>
             </AnchorPane>
         </items>

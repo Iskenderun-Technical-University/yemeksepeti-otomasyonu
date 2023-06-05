@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CartController">
+   <children>
+      <Label layoutX="32.0" layoutY="25.0" text="Sepet">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_Name1" layoutX="32.0" layoutY="147.0" text=" " />
+      <Label fx:id="lbl_price1" layoutX="143.0" layoutY="147.0" text=" " />
+      <ComboBox fx:id="cmb1" layoutX="216.0" layoutY="143.0" onAction="#cmb1_Action" prefHeight="25.0" prefWidth="74.0" visible="false" />
+      <Label fx:id="lbl_lprice1" layoutX="326.0" layoutY="147.0" text=" " />
+      <Label layoutX="32.0" layoutY="96.0" text="Yemek">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="143.0" layoutY="96.0" text="Fiyat">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="326.0" layoutY="96.0" text="Tutar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="216.0" layoutY="96.0" text="Adet">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Line endX="399.0" layoutX="101.0" layoutY="448.0" startX="-100.0" />
+      <Label layoutX="329.0" layoutY="475.0" text="Toplam : ">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_total" layoutX="391.0" layoutY="475.0" text=" " />
+      <Label fx:id="lbl_Name2" layoutX="32.0" layoutY="195.0" text=" " />
+      <Label fx:id="lbl_price2" layoutX="143.0" layoutY="195.0" text=" " />
+      <ComboBox fx:id="cmb2" layoutX="216.0" layoutY="191.0" onAction="#cmb2_Action" prefHeight="25.0" prefWidth="74.0" visible="false" />
+      <Label fx:id="lbl_lprice2" layoutX="326.0" layoutY="195.0" text=" " />
+      <Label fx:id="lbl_Name3" layoutX="32.0" layoutY="242.0" text=" " />
+      <Label fx:id="lbl_price3" layoutX="143.0" layoutY="242.0" text=" " />
+      <ComboBox fx:id="cmb3" layoutX="216.0" layoutY="238.0" onAction="#cmb3_Action" prefHeight="25.0" prefWidth="74.0" visible="false" />
+      <Label fx:id="lbl_lprice3" layoutX="326.0" layoutY="242.0" text=" " />
+      <Label fx:id="lbl_Name4" layoutX="32.0" layoutY="292.0" text=" " />
+      <Label fx:id="lbl_price4" layoutX="143.0" layoutY="292.0" text=" " />
+      <ComboBox fx:id="cmb4" layoutX="216.0" layoutY="288.0" onAction="#cmb4_Action" prefHeight="25.0" prefWidth="74.0" visible="false" />
+      <Label fx:id="lbl_lprice4" layoutX="326.0" layoutY="292.0" text=" " />
+      <Label fx:id="lbl_Name5" layoutX="32.0" layoutY="337.0" text=" " />
+      <Label fx:id="lbl_price5" layoutX="143.0" layoutY="337.0" text=" " />
+      <ComboBox fx:id="cmb5" layoutX="216.0" layoutY="333.0" onAction="#cmb5_Action" prefHeight="25.0" prefWidth="74.0" visible="false" />
+      <Label fx:id="lbl_lprice5" layoutX="326.0" layoutY="337.0" text=" " />
+      <Label fx:id="lbl_Name6" layoutX="32.0" layoutY="386.0" text=" " />
+      <Label fx:id="lbl_price6" layoutX="143.0" layoutY="386.0" text=" " />
+      <ComboBox fx:id="cmb6" layoutX="216.0" layoutY="382.0" onAction="#cmb6_Action" prefHeight="25.0" prefWidth="74.0" visible="false" />
+      <Label fx:id="lbl_lprice6" layoutX="326.0" layoutY="386.0" text=" " />
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="427.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="427.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="427.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="427.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="412.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="412.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="427.0" layoutY="96.0" text="Çıkar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

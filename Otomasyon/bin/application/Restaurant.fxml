@@ -49,9 +49,9 @@
       <Line endX="188.0" layoutX="162.0" layoutY="306.0" startX="-162.0" />
       <Line endX="188.0" layoutX="162.0" layoutY="403.0" startX="-162.0" />
       <Line endX="188.0" layoutX="162.0" layoutY="497.0" startX="-162.0" />
-      <ImageView fx:id="cartbtn1" fitHeight="35.0" fitWidth="35.0" layoutX="308.0" layoutY="268.0" onMouseClicked="#cartbtn1_Click" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="cartbtn2" fitHeight="35.0" fitWidth="35.0" layoutX="308.0" layoutY="362.0" onMouseClicked="#cartbtn2_Click" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="cartbtn3" fitHeight="35.0" fitWidth="35.0" layoutX="308.0" layoutY="460.0" onMouseClicked="#cartbtn3_Click" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="cartbtn4" fitHeight="35.0" fitWidth="35.0" layoutX="308.0" layoutY="552.0" onMouseClicked="#cartbtn4_Click" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="cartbtn1" fitHeight="30.0" fitWidth="30.0" layoutX="314.0" layoutY="275.0" onMouseClicked="#cartbtn1_Click" onMouseMoved="#cartbtn1_Moved" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="cartbtn2" fitHeight="30.0" fitWidth="30.0" layoutX="314.0" layoutY="369.0" onMouseClicked="#cartbtn2_Click" onMouseMoved="#cartbtn2_Moved" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="cartbtn3" fitHeight="30.0" fitWidth="30.0" layoutX="314.0" layoutY="467.0" onMouseClicked="#cartbtn3_Click" onMouseMoved="#cartbtn3_Moved" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="cartbtn4" fitHeight="30.0" fitWidth="30.0" layoutX="314.0" layoutY="559.0" onMouseClicked="#cartbtn4_Click" onMouseMoved="#cartbtn4_Moved" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

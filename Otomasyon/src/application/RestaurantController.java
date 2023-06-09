@@ -14,6 +14,7 @@ import com.YemekSepetiMySQL.Util.DatabaseUtil;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -32,11 +33,10 @@ public class RestaurantController {
 	Connection connection=null;
     PreparedStatement query=null;
     ResultSet result=null;
-    String sql;
+    String sql;    
     
     public static String foodName;
-    public static double price;
-    
+    public static Double price;
 
     @FXML
     private ResourceBundle resources;
@@ -109,6 +109,26 @@ public class RestaurantController {
 
     @FXML
     private Label lbl_Restaurant;
+    
+    @FXML
+    void cartbtn1_Moved(MouseEvent event) {
+    	cartbtn1.setCursor(Cursor.HAND);
+    }
+    
+    @FXML
+    void cartbtn2_Moved(MouseEvent event) {
+    	cartbtn2.setCursor(Cursor.HAND);
+    }
+    
+    @FXML
+    void cartbtn3_Moved(MouseEvent event) {
+    	cartbtn3.setCursor(Cursor.HAND);
+    }
+    
+    @FXML
+    void cartbtn4_Moved(MouseEvent event) {
+    	cartbtn4.setCursor(Cursor.HAND);
+    }
     
     public void Fill()
     {
@@ -204,6 +224,10 @@ public class RestaurantController {
     	    	try {
     	    		query=connection.prepareStatement(sql);
     	    		ResultSet result=query.executeQuery();
+    	    		
+    	    		//if(CartController.i==6) {
+    	    		//	System.out.println("Sepet Dolu.!");
+    	    		//}
     	    		
     	    		if(result.next())
     	    		{

@@ -10,15 +10,15 @@
 
 <AnchorPane fx:id="orderPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OrderController">
 <children>
-      <ImageView fx:id="img1" fitHeight="150.0" fitWidth="128.0" layoutX="75.0" layoutY="160.0" onMouseDragged="#img1_Dragged" onMousePressed="#img1_Click" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="img5" fitHeight="150.0" fitWidth="128.0" layoutX="75.0" layoutY="397.0" onMouseDragged="#img5_Dragged" onMousePressed="#img5_Click" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="img2" fitHeight="150.0" fitWidth="128.0" layoutX="288.0" layoutY="160.0" onMouseDragged="#img2_Dragged" onMousePressed="#img2_Click" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="img6" fitHeight="150.0" fitWidth="128.0" layoutX="288.0" layoutY="397.0" onMouseDragged="#img6_Dragged" onMousePressed="#img6_Click" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="img3" fitHeight="150.0" fitWidth="128.0" layoutX="491.0" layoutY="160.0" onMouseDragged="#img3_Dragged" onMousePressed="#img3_Click" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="img7" fitHeight="150.0" fitWidth="128.0" layoutX="491.0" layoutY="397.0" onMouseDragged="#img7_Dragged" onMousePressed="#img7_Click" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="img4" fitHeight="150.0" fitWidth="128.0" layoutX="694.0" layoutY="160.0" onMouseDragged="#img4_Dragged" onMousePressed="#img4_Click" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="img8" fitHeight="150.0" fitWidth="128.0" layoutX="694.0" layoutY="397.0" onMouseDragged="#img8_Dragged" onMousePressed="#img8_Click" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="img_exit" fitHeight="40.0" fitWidth="31.0" layoutX="855.0" layoutY="14.0" onMouseClicked="#img_exit_Click" onMouseDragged="#img_exit_Dragged" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="img1" fitHeight="150.0" fitWidth="128.0" layoutX="75.0" layoutY="160.0" onMouseMoved="#img1_Moved" onMousePressed="#img1_Click" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img5" fitHeight="150.0" fitWidth="128.0" layoutX="75.0" layoutY="397.0" onMouseMoved="#img5_Moved" onMousePressed="#img5_Click" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img2" fitHeight="150.0" fitWidth="128.0" layoutX="288.0" layoutY="160.0" onMouseMoved="#img2_Moved" onMousePressed="#img2_Click" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img6" fitHeight="150.0" fitWidth="128.0" layoutX="288.0" layoutY="397.0" onMouseMoved="#img6_Moved" onMousePressed="#img6_Click" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img3" fitHeight="150.0" fitWidth="128.0" layoutX="491.0" layoutY="160.0" onMouseMoved="#img3_Moved" onMousePressed="#img3_Click" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img7" fitHeight="150.0" fitWidth="128.0" layoutX="491.0" layoutY="397.0" onMouseMoved="#img7_Moved" onMousePressed="#img7_Click" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img4" fitHeight="150.0" fitWidth="128.0" layoutX="694.0" layoutY="160.0" onMouseMoved="#img4_Moved" onMousePressed="#img4_Click" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img8" fitHeight="150.0" fitWidth="128.0" layoutX="694.0" layoutY="397.0" onMouseMoved="#img8_Moved" onMousePressed="#img8_Click" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img_exit" fitHeight="40.0" fitWidth="31.0" layoutX="855.0" layoutY="14.0" onMouseClicked="#img_exit_Click" onMouseMoved="#img_exit_Moved" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/exitBlue.png" />
          </image>

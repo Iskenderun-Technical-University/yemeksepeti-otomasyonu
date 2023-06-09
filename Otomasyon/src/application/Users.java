@@ -7,6 +7,7 @@ public class Users {
 	private String userName;
 	private String password;
 	private String adress;
+	private Button button;
 	
 	public String getAdress() {
 		return adress;
@@ -15,8 +16,6 @@ public class Users {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
-
-	private Button button;
 	
 	public int getTitle() {
 		return title;

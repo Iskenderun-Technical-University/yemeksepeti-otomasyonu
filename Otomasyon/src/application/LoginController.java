@@ -13,7 +13,7 @@ import com.YemekSepetiMySQL.Util.DatabaseUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 
 import javafx.scene.control.Button;
@@ -58,6 +58,16 @@ public class LoginController {
     ResultSet result=null;
     String sql;
     public static String userSession;    
+    
+    @FXML
+    void btn_giris_Moved(MouseEvent event) {
+    	btn_giris.setCursor(Cursor.HAND);
+    }
+    
+    @FXML
+    void btn_exit_Moved(MouseEvent event) {
+    	btn_exit.setCursor(Cursor.HAND);
+    }
     
     @FXML
     void btn_exit_Click(MouseEvent event) 

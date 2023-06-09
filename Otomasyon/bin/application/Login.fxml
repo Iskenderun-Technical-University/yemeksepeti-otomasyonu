@@ -22,7 +22,7 @@
          </image>
       </ImageView>
       <TextField fx:id="txt_userName" alignment="CENTER" layoutX="57.0" layoutY="302.0" prefHeight="33.0" prefWidth="205.0" promptText="Username                            " style="-fx-border-color: #2ab933;" />
-      <Button fx:id="btn_giris" layoutX="119.0" layoutY="408.0" mnemonicParsing="false" onAction="#btn_giris_Click" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: #2ab933;" text="Giriş" textFill="#09d6dd">
+      <Button fx:id="btn_giris" layoutX="119.0" layoutY="408.0" mnemonicParsing="false" onAction="#btn_giris_Click" onMouseMoved="#btn_giris_Moved" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: #2ab933;" text="Giriş" textFill="#09d6dd">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -38,7 +38,7 @@
             <Image url="@../../image/lock.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btn_exit" fitHeight="30.0" fitWidth="30.0" layoutX="284.0" layoutY="7.0" onMouseClicked="#btn_exit_Click" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btn_exit" fitHeight="30.0" fitWidth="30.0" layoutX="284.0" layoutY="7.0" onMouseClicked="#btn_exit_Click" onMouseMoved="#btn_exit_Moved" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/exit.png" />
          </image>

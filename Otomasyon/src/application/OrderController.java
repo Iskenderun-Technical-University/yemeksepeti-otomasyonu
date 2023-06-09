@@ -12,6 +12,7 @@ import com.YemekSepetiMySQL.Util.DatabaseUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -112,17 +113,17 @@ public class OrderController {
 
     @FXML
     void btn_cart_Click(ActionEvent event) {
-
+    	
     }
 
     @FXML
     void img1_Click(MouseEvent event) {
     	goRest(0);
     }
-
+    
     @FXML
-    void img1_Dragged(MouseEvent event) {
-
+    void img1_Moved(MouseEvent event) {
+    	img1.setCursor(Cursor.HAND);
     }
 
     @FXML
@@ -131,8 +132,8 @@ public class OrderController {
     }
 
     @FXML
-    void img2_Dragged(MouseEvent event) {
-    	
+    void img2_Moved(MouseEvent event) {
+    	img2.setCursor(Cursor.HAND);
     }
 
     @FXML
@@ -141,8 +142,8 @@ public class OrderController {
     }
 
     @FXML
-    void img3_Dragged(MouseEvent event) {
-
+    void img3_Moved(MouseEvent event) {
+    	img3.setCursor(Cursor.HAND);
     }
 
     @FXML
@@ -151,8 +152,8 @@ public class OrderController {
     }
 
     @FXML
-    void img4_Dragged(MouseEvent event) {
-
+    void img4_Moved(MouseEvent event) {
+    	img4.setCursor(Cursor.HAND);
     }
 
     @FXML
@@ -161,8 +162,8 @@ public class OrderController {
     }
 
     @FXML
-    void img5_Dragged(MouseEvent event) {
-
+    void img5_Moved(MouseEvent event) {
+    	img5.setCursor(Cursor.HAND);
     }
 
     @FXML
@@ -171,8 +172,8 @@ public class OrderController {
     }
 
     @FXML
-    void img6_Dragged(MouseEvent event) {
-
+    void img6_Moved(MouseEvent event) {
+    	img6.setCursor(Cursor.HAND);
     }
 
     @FXML
@@ -181,8 +182,8 @@ public class OrderController {
     }
 
     @FXML
-    void img7_Dragged(MouseEvent event) {
-
+    void img7_Moved(MouseEvent event) {
+    	img7.setCursor(Cursor.HAND);
     }
 
     @FXML
@@ -191,13 +192,13 @@ public class OrderController {
     }
 
     @FXML
-    void img8_Dragged(MouseEvent event) {
-
+    void img8_Moved(MouseEvent event) {
+    	img8.setCursor(Cursor.HAND);
     }
     
     @FXML
-    void img_exit_Dragged(MouseEvent event) {
-
+    void img_exit_Moved(MouseEvent event) {
+    	img_exit.setCursor(Cursor.HAND);
     }
 
     @FXML
@@ -210,7 +211,7 @@ public class OrderController {
     	try {
     		if(label[i].getText()!=null) 
         	{
-    			connection=DatabaseUtil.Connect();
+    			//connection=DatabaseUtil.Connect();
     	    	sql="select * from food where foodName='"+label[i].getText().trim()+"'";
     	  	
     	    	try {
@@ -267,22 +268,25 @@ public class OrderController {
     		
     @FXML
     void txt_search_KeyPressed(KeyEvent event) {
-    	connection=DatabaseUtil.Connect();
-    	sql="select * from food where foodName like '%"+txt_search.getText().trim()+"%'";
+    	//connection=DatabaseUtil.Connect();
+    	sql="select * from food where foodName like ?";
   	
     	try {
     		query=connection.prepareStatement(sql);
+    		query.setString(1,"%"+txt_search.getText().trim()+"%");
     		ResultSet result=query.executeQuery();
     		
-    		if(result.next()) {
-    			for(ImageView i:img) {i.setImage(null);}
-    			for(Label i:label) {i.setText(null);}
-    		}
+    		
     		while(result.next() && i!=8)
     		{
+    			if(i==0) {
+    				for(ImageView a:img) {a.setImage(null);}
+        			for(Label b:label) {b.setText(null);}
+    			}
     			img[i].setImage(new Image("file:"+result.getString("imageURL")));
     			label[i].setText(result.getString("foodName"));
     			i++;
+    			
     		}
     		i=0;
     	} catch (Exception e) {
@@ -292,7 +296,7 @@ public class OrderController {
     
     public void Fill()
     {
-    	connection=DatabaseUtil.Connect();
+    	//connection=DatabaseUtil.Connect();
     	sql="select * from food";
     	//ObservableList<Food> FoodList=FXCollections.observableArrayList();
     	try {
@@ -314,7 +318,7 @@ public class OrderController {
 
     @FXML
     void initialize() {
-    	
+    	connection=DatabaseUtil.Connect();
     	setImageView();
     	setLabel();
     	Fill();

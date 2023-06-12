@@ -8,7 +8,12 @@ import java.util.ResourceBundle;
 
 import com.YemekSepetiMySQL.Util.DatabaseUtil;
 
-
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.IntegerBinding;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +29,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.image.*;
-
 import javafx.scene.image.ImageView;
 import java.io.*; 
 
@@ -110,10 +114,26 @@ public class OrderController {
     PreparedStatement query=null;
     ResultSet result=null;
     String sql;
+    
+    //ObservableList<CartClass> CartList=FXCollections.observableArrayList();
+    static ObservableList<CartClass> Transfer=FXCollections.observableArrayList();
+	Button[] buttons=new Button[10];
+    int buttonNo=0;
+    
+    
 
     @FXML
     void btn_cart_Click(ActionEvent event) {
-    	
+    	try {
+			Stage stage1 = new Stage();
+			AnchorPane pane1 = (AnchorPane)FXMLLoader.load(getClass().getResource("Cart.fxml"));
+			Scene scene = new Scene(pane1);
+			stage1.setScene(scene);
+			//stage1.initStyle(StageStyle.UNDECORATED);
+			stage1.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
@@ -265,12 +285,11 @@ public class OrderController {
     	label[6]=lbl7;
     	label[7]=lbl8;
     }
-    		
+
     @FXML
     void txt_search_KeyPressed(KeyEvent event) {
     	//connection=DatabaseUtil.Connect();
-    	sql="select * from food where foodName like ?";
-  	
+    	sql="select * from food where foodName like ?";    	
     	try {
     		query=connection.prepareStatement(sql);
     		query.setString(1,"%"+txt_search.getText().trim()+"%");
@@ -315,6 +334,7 @@ public class OrderController {
     	}
     	i=0;
     }
+    
 
     @FXML
     void initialize() {
@@ -323,7 +343,8 @@ public class OrderController {
     	setLabel();
     	Fill();
     	if(txt_search.getText()==null)
-    		Fill();
+    		Fill();  
+    	 	
     }
 
 }

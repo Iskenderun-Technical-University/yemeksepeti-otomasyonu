@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -36,5 +38,10 @@
          </font>
       </Label>
       <Button layoutX="333.0" layoutY="543.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="130.0" text="Sepeti Onayla" />
+      <ImageView fx:id="btn_Exit" fitHeight="27.0" fitWidth="25.0" layoutX="473.0" layoutY="2.0" onMouseClicked="#btn_Exit_Clicked" onMouseMoved="#btn_Exit_Moved" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/exitBlue.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

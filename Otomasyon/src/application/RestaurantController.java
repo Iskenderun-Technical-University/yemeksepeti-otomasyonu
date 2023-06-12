@@ -8,17 +8,26 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.YemekSepetiMySQL.Util.DatabaseUtil;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class RestaurantController {
 	
@@ -29,14 +38,11 @@ public class RestaurantController {
     Label[] labelName=new Label[4];
     Label[] labelExplanation=new Label[4];
     Label[] labelPrice=new Label[4];
-	
+    
 	Connection connection=null;
     PreparedStatement query=null;
     ResultSet result=null;
     String sql;    
-    
-    public static String foodName;
-    public static Double price;
 
     @FXML
     private ResourceBundle resources;
@@ -109,6 +115,9 @@ public class RestaurantController {
 
     @FXML
     private Label lbl_Restaurant;
+    
+    Button[] buttons=new Button[10];
+    int buttonNo=0;
     
     @FXML
     void cartbtn1_Moved(MouseEvent event) {
@@ -196,25 +205,25 @@ public class RestaurantController {
     
     @FXML
     void cartbtn1_Click(MouseEvent event) {
-    	goCart(0);
+    	Add(0);
     }
 
     @FXML
     void cartbtn2_Click(MouseEvent event) {
-    	goCart(1);
+    	Add(1);
     }
 
     @FXML
     void cartbtn3_Click(MouseEvent event) {
-    	goCart(2);
+    	Add(2);
     }
 
     @FXML
     void cartbtn4_Click(MouseEvent event) {
-    	goCart(3);
+    	Add(3);
     }
     
-    public void goCart(int i)
+    public void Add(int i)
     {
     		if(labelName[i].getText()!=null) 
         	{
@@ -231,29 +240,50 @@ public class RestaurantController {
     	    		
     	    		if(result.next())
     	    		{
-    	    			foodName=result.getString("foodName");
-    	    			price=result.getDouble("price");
-    	    			try {
-		        			Stage stage1 = new Stage();
-		        			AnchorPane pane1 = (AnchorPane)FXMLLoader.load(getClass().getResource("Cart.fxml"));
-		        			Scene scene = new Scene(pane1);
-		        			stage1.setScene(scene);
-		        			//stage1.initStyle(StageStyle.UNDECORATED);
-		        			stage1.show();
-		        			//stage=(Stage) orderPane.getScene().getWindow();
-		        			//stage.hide();
-		        		} catch(Exception e) {
-		        			e.printStackTrace();
-		        		}
+    	    			if(CartController.CartList.size()==0 || CartController.CartList.get(0).getRestaurantName().equals(result.getString("restaurantName")))
+    	    			{
+    	    				Alert alert1=new Alert(AlertType.INFORMATION);
+    	    				alert1.setTitle("Sepete Ekleme");
+    	    				alert1.setHeaderText("Ürünü sepete eklensin mi?");
+    	    				ButtonType btn1=new ButtonType("Tamam",ButtonData.OK_DONE);
+    	    				ButtonType btn2=new ButtonType("İptal",ButtonData.CANCEL_CLOSE);
+    	    				alert1.getButtonTypes().setAll(btn1,btn2);
+    	    				Optional<ButtonType> isOK=alert1.showAndWait();
+    	    				if(isOK.get()==alert1.getButtonTypes().get(0)) {
+    	    					OrderController.Transfer.add(new CartClass(result.getString("restaurantName"),result.getString("foodName"),result.getDouble("price")));
+    	    					CartController.CartList.add(new CartClass(result.getString("restaurantName"),result.getString("foodName"),result.getDouble("price"),result.getDouble("price"),buttons[buttonNo],1));
+    	    					buttonNo++;
+    	    					CartController.size.set(CartController.size.get()+1);;
+    	    				}}	
+    	    			else
+    	    			{	    					
+    	    				Alert alert2=new Alert(AlertType.ERROR);
+    	    				alert2.setTitle("Sepete Eklenemez");
+    	    				alert2.setHeaderText("Sepette başka restoranta ait ürün var.!");
+    	    				alert2.showAndWait();
+    	    			}
     	    		}
     	    	} catch (Exception e) {
     	    		System.out.println(e.getMessage().toString());
+    	    		
+    	    		
     	    	}
         	}
+    }
+    
+    public void buttonRef() 
+    {
+    	for(int i=0; i<buttons.length; i++) {
+			buttons[i]=new Button();
+			buttons[i].setId("btn"+i);
+			buttons[i].setOnAction(this::Button);
+    		}
     }
 
     @FXML
     void initialize() {
+    	
+    	buttonRef();
     	setImageView();
     	setCartImageView();
     	setLabelName();
@@ -261,5 +291,19 @@ public class RestaurantController {
     	setLabelPrice();
     	Fill();
     }
+    
+    @FXML
+    void Button(ActionEvent event) {
+    	for(int i=0; i<buttons.length; i++) {
+    		if(event.getSource()==buttons[i]) {
+    			OrderController.Transfer.remove(i);
+    			CartController.CartList.clear();
+                for (int j = 0; j < OrderController.Transfer.size(); j++)
+              	  CartController.CartList.add(new CartClass(OrderController.Transfer.get(j).getRestaurantName(),OrderController.Transfer.get(j).getFoodName(),OrderController.Transfer.get(j).getPrice(),OrderController.Transfer.get(j).getPrice(),buttons[j],1));
+    		CartController.size.set(CartController.size.get()-1);
+    		}
+        }
+    }
 
+    
 }

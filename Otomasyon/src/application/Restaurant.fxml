@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RestaurantController">
+   <children>
+      <ImageView fx:id="img_Restaurant" fitHeight="169.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lbl_Restaurant" layoutX="22.0" layoutY="180.0" text=" ">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="img1" fitHeight="67.0" fitWidth="73.0" layoutX="263.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lbl_Name1" layoutX="14.0" layoutY="218.0" text=" ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_Explanation1" layoutX="14.0" layoutY="250.0" text=" " />
+      <Label fx:id="lbl_Price1" layoutX="14.0" layoutY="275.0" text=" " />
+      <ImageView fx:id="img2" fitHeight="67.0" fitWidth="73.0" layoutX="263.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lbl_Name2" layoutX="14.0" layoutY="312.0" text=" ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_Explanation2" layoutX="14.0" layoutY="344.0" text=" " />
+      <Label fx:id="lbl_Price2" layoutX="14.0" layoutY="369.0" text=" " />
+      <ImageView fx:id="img3" fitHeight="67.0" fitWidth="73.0" layoutX="263.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lbl_Name3" layoutX="14.0" layoutY="410.0" text=" ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_Explanation3" layoutX="14.0" layoutY="442.0" text=" " />
+      <Label fx:id="lbl_Price3" layoutX="14.0" layoutY="467.0" text=" " />
+      <ImageView fx:id="img4" fitHeight="67.0" fitWidth="73.0" layoutX="263.0" layoutY="509.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lbl_Name4" layoutX="14.0" layoutY="502.0" text=" ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_Explanation4" layoutX="14.0" layoutY="534.0" text=" " />
+      <Label fx:id="lbl_Price4" layoutX="14.0" layoutY="559.0" text=" " />
+      <Line endX="188.0" layoutX="162.0" layoutY="306.0" startX="-162.0" />
+      <Line endX="188.0" layoutX="162.0" layoutY="403.0" startX="-162.0" />
+      <Line endX="188.0" layoutX="162.0" layoutY="497.0" startX="-162.0" />
+      <ImageView fx:id="cartbtn1" fitHeight="30.0" fitWidth="30.0" layoutX="314.0" layoutY="275.0" onMouseClicked="#cartbtn1_Click" onMouseMoved="#cartbtn1_Moved" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="cartbtn2" fitHeight="30.0" fitWidth="30.0" layoutX="314.0" layoutY="369.0" onMouseClicked="#cartbtn2_Click" onMouseMoved="#cartbtn2_Moved" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="cartbtn3" fitHeight="30.0" fitWidth="30.0" layoutX="314.0" layoutY="467.0" onMouseClicked="#cartbtn3_Click" onMouseMoved="#cartbtn3_Moved" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="cartbtn4" fitHeight="30.0" fitWidth="30.0" layoutX="314.0" layoutY="559.0" onMouseClicked="#cartbtn4_Click" onMouseMoved="#cartbtn4_Moved" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

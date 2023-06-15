@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CartController">
+   <children>
+      <Label layoutX="32.0" layoutY="25.0" text="Sepet">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableView_Cart" layoutX="32.0" layoutY="81.0" prefHeight="386.0" prefWidth="438.0">
+        <columns>
+          <TableColumn fx:id="col_foodName" prefWidth="101.0" text="Yemek" />
+          <TableColumn fx:id="col_price" prefWidth="82.0" text="Fiyat" />
+            <TableColumn fx:id="col_piece" prefWidth="93.0" text="Adet" />
+            <TableColumn fx:id="col_total" prefWidth="93.0" text="Tutar" />
+            <TableColumn fx:id="col_button" prefWidth="68.0" />
+        </columns>
+      </TableView>
+      <Line endX="368.0" layoutX="115.0" layoutY="495.0" startX="-100.0" />
+      <Label layoutX="334.0" layoutY="509.0" text="Toplam :">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_total" layoutX="395.0" layoutY="509.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_Order" layoutX="333.0" layoutY="543.0" mnemonicParsing="false" onAction="#btn_Order_Click" prefHeight="35.0" prefWidth="130.0" text="Sepeti Onayla" />
+      <ImageView fx:id="btn_Exit" fitHeight="27.0" fitWidth="25.0" layoutX="473.0" layoutY="2.0" onMouseClicked="#btn_Exit_Clicked" onMouseMoved="#btn_Exit_Moved" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/exitBlue.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

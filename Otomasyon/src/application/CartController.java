@@ -1,7 +1,18 @@
 package application;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
+
+import com.YemekSepetiMySQL.Util.DatabaseUtil;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
@@ -18,13 +29,18 @@ import javafx.beans.property.IntegerProperty;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
+import java.time.LocalDateTime;
 import javafx.scene.Cursor;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.stage.*;
 
 public class CartController {
@@ -55,6 +71,9 @@ public class CartController {
     
     @FXML
     private ImageView btn_Exit;
+    
+    @FXML
+    private Button btn_Order;
 
     @FXML
     private TableView<CartClass> tableView_Cart;	
@@ -64,9 +83,48 @@ public class CartController {
     static IntegerProperty size = new SimpleIntegerProperty(0);
     double total=0;
     
+    Connection connection=null;
+    PreparedStatement query=null;
+    ResultSet result=null;
+    String sql;
+    
     @FXML
     void btn_Exit_Clicked(MouseEvent event) {
 
+    }
+    
+    @FXML
+    void btn_Order_Click(ActionEvent event) {
+    	Alert alert=new Alert(AlertType.INFORMATION);
+		alert.setTitle("Sipariş");
+		alert.setHeaderText("Sipariş verilsin mi?");
+		ButtonType btn1=new ButtonType("Tamam",ButtonData.OK_DONE);
+		ButtonType btn2=new ButtonType("İptal",ButtonData.CANCEL_CLOSE);
+		alert.getButtonTypes().setAll(btn1,btn2);
+		Optional<ButtonType> isOK=alert.showAndWait();
+		if(isOK.get()==alert.getButtonTypes().get(0)) {
+			for(int i=0; i<CartList.size(); i++)
+				Order(i);
+			
+		}
+    }
+    
+    public void Order(int i)
+    {
+    	sql="insert into process(userName, restaurantName, foodName, piece, price, processDate) values(?,?,?,?,?,?)";
+    	try {
+    		query=connection.prepareStatement(sql);
+    		query.setString(1, LoginController.userSession);
+    		query.setString(2, CartList.get(i).getRestaurantName());
+    		query.setString(3, CartList.get(i).getFoodName());
+    		query.setInt(4, tableView_Cart.getItems().get(i).getPiece());
+    		query.setDouble(5, CartList.get(i).getPrice());
+    		query.setDate(6,Date.valueOf(LocalDate.now()));
+    		query.executeUpdate();
+    		
+    		} catch (Exception e) {
+    		System.out.println(e.getMessage().toString());
+    	}
     }
 
     @FXML
@@ -121,6 +179,7 @@ public class CartController {
     @FXML
     void initialize() 
     {
+    	connection=DatabaseUtil.Connect();
     	Show(CartList);
     	
     	if(!col_foodName.getCellData(0).isEmpty())

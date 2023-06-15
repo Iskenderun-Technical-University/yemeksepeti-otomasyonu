@@ -300,7 +300,7 @@ public class RestaurantController {
     			CartController.CartList.clear();
                 for (int j = 0; j < OrderController.Transfer.size(); j++)
               	  CartController.CartList.add(new CartClass(OrderController.Transfer.get(j).getRestaurantName(),OrderController.Transfer.get(j).getFoodName(),OrderController.Transfer.get(j).getPrice(),OrderController.Transfer.get(j).getPrice(),buttons[j],1));
-    		CartController.size.set(CartController.size.get()-1);
+                CartController.size.set(CartController.size.get()-1);
     		}
         }
     }

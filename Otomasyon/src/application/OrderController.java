@@ -72,6 +72,9 @@ public class OrderController {
     private ImageView img_exit;
     
     @FXML
+    private ImageView cart;
+    
+    @FXML
     private Label lbl1;
 
     @FXML
@@ -120,10 +123,8 @@ public class OrderController {
 	Button[] buttons=new Button[10];
     int buttonNo=0;
     
-    
-
     @FXML
-    void btn_cart_Click(ActionEvent event) {
+    void cart_Click(MouseEvent event) {
     	try {
 			Stage stage1 = new Stage();
 			AnchorPane pane1 = (AnchorPane)FXMLLoader.load(getClass().getResource("Cart.fxml"));
@@ -134,6 +135,11 @@ public class OrderController {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+    }
+    
+    @FXML
+    void cart_Moved(MouseEvent event) {
+    	cart.setCursor(Cursor.HAND);
     }
 
     @FXML

@@ -61,6 +61,10 @@ public class Users {
 		
 	}
 	
+	Users(String userName){
+		this.userName=userName;
+	}
+	
 	Users(int id,int title,String userName,String password,Button button,String adress){
 		this.id=id;
 		this.title=title;

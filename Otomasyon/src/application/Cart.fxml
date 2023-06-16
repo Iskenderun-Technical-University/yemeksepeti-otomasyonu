@@ -4,13 +4,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CartController">
+<AnchorPane fx:id="cartPane" prefHeight="600.0" prefWidth="500.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CartController">
    <children>
       <Label layoutX="32.0" layoutY="25.0" text="Sepet">
          <font>
@@ -37,11 +35,9 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="btn_Order" layoutX="333.0" layoutY="543.0" mnemonicParsing="false" onAction="#btn_Order_Click" prefHeight="35.0" prefWidth="130.0" text="Sepeti Onayla" />
-      <ImageView fx:id="btn_Exit" fitHeight="27.0" fitWidth="25.0" layoutX="473.0" layoutY="2.0" onMouseClicked="#btn_Exit_Clicked" onMouseMoved="#btn_Exit_Moved" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../image/exitBlue.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="btn_Order" layoutX="333.0" layoutY="543.0" mnemonicParsing="false" onAction="#btn_Order_Click" onMouseMoved="#btn_Order_Moved" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #2ab933;" text="Sepeti Onayla" textFill="#cdb659">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

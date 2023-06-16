@@ -70,9 +70,6 @@ public class CartController {
     private Label lbl_total;
     
     @FXML
-    private ImageView btn_Exit;
-    
-    @FXML
     private Button btn_Order;
 
     @FXML
@@ -89,8 +86,8 @@ public class CartController {
     String sql;
     
     @FXML
-    void btn_Exit_Clicked(MouseEvent event) {
-
+    void btn_Order_Moved(MouseEvent event) {
+    	btn_Order.setCursor(Cursor.HAND);
     }
     
     @FXML
@@ -105,7 +102,9 @@ public class CartController {
 		if(isOK.get()==alert.getButtonTypes().get(0)) {
 			for(int i=0; i<CartList.size(); i++)
 				Order(i);
-			
+			CartList.clear();
+			OrderController.Transfer.clear();
+			lbl_total.setText(null);
 		}
     }
     
@@ -125,11 +124,6 @@ public class CartController {
     		} catch (Exception e) {
     		System.out.println(e.getMessage().toString());
     	}
-    }
-
-    @FXML
-    void btn_Exit_Moved(MouseEvent event) {
-    	btn_Exit.setCursor(Cursor.HAND);
     }
 
     public void Show(ObservableList<CartClass> list)

@@ -1,1 +1,16 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#orderPane {
+	-fx-background-image: url("../../image/orderBack.png");
+    -fx-background-size: cover;
+}
+
+
+
+#cartPane {
+	-fx-background-image: url("../../image/loginWalpaper.jpg");
+    -fx-background-size: cover;
+}
+
+#homepagePane {
+	-fx-background-image: url("../../image/orderBack.png");
+    -fx-background-size: cover;
+}

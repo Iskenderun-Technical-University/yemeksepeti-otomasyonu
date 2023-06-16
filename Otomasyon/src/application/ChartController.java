@@ -47,6 +47,9 @@ public class ChartController {
     private Button btn_Del;
     
     @FXML
+    private Button btn_Clear;
+    
+    @FXML
     private TableView<Users> listUser;
     
     @FXML
@@ -110,6 +113,16 @@ public class ChartController {
     void btn_Del_Click(ActionEvent event) {
     	listUser.getItems().remove(listUser.getSelectionModel().getSelectedItem());
     }
+    
+    @FXML
+    void btn_Clear_Click(ActionEvent event) {
+    	
+    	chart.getData().clear();
+    	user1.clear();
+    	user2.clear();
+    	user3.clear();
+    	date.clear();
+    }
 
     
     @FXML
@@ -131,27 +144,21 @@ public class ChartController {
     				else
     				{
     					DatePref();
-    					int i=0;
-    					for(Users tmp:users)
+    					for(int i=0; i<Integer.valueOf(txt_Piece.getText()); i++)
     					{
+    						user1.add(i,0);
+    						user2.add(i,0);
+    						user3.add(i,0);
+    					}		
+    					for(Users tmp:users)
     						DailyAmount(tmp.getUserName());
-    						i++;
-    					}
-    					/*
-    					if(users.size()==3)
-    						Show(users.get(0).getUserName(),users.get(1).getUserName());
-    					else
-    						Show(users.get(0).getUserName(),users.get(1).getUserName());
-    					*/
-    					for(Users a:users)
-    						System.out.println(a.getUserName());
     					
-    					for(Integer a:user1)
-    						System.out.println(a);
-    					for(Integer a:user2)
-    						System.out.println(a);
-    					for(LocalDate a:date)
-    						System.out.println(a);
+    					if(users.size()==3)
+    						Show(users.get(0).getUserName(),users.get(1).getUserName(),users.get(2).getUserName());
+    					else if(users.size()==2)
+    						Show(users.get(0).getUserName(),users.get(1).getUserName(),null);
+    					else if(users.size()==1)
+    						Show(users.get(0).getUserName(),null,null);
     				}
     			}
     		}	
@@ -181,32 +188,39 @@ public class ChartController {
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void Show(String usr1,String usr2)
+    public void Show(String usr1,String usr2,String usr3)
     {
     	XYChart.Series series1 = new XYChart.Series();
         series1.setName(usr1);
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName(usr2);
-        //XYChart.Series series3 = null;
+        XYChart.Series series2 = null;
+        XYChart.Series series3 = null;
         
         for (int i = 0; i < Integer.valueOf(txt_Piece.getText()); i++) {
             series1.getData().add(new XYChart.Data<String, Integer>(String.valueOf(date.get(i)), user1.get(i)));
-            series2.getData().add(new XYChart.Data<String, Integer>(String.valueOf(date.get(i)), user2.get(i)));
             
-           /* if (usr3 != null) {
+            if (usr2 != null) {
+                if (series2 == null) {
+                    series2 = new XYChart.Series();
+                    series2.setName(usr2);
+                }
+                series2.getData().add(new XYChart.Data<String, Integer>(String.valueOf(date.get(i)), user2.get(i)));
+                if (i + 1 == Integer.valueOf(txt_Piece.getText())) {
+                    chart.getData().add(series2);
+                }
+            }
+            
+            if (usr3 != null) {
                 if (series3 == null) {
                     series3 = new XYChart.Series();
                     series3.setName(usr3);
                 }
-                series3.getData().add(new XYChart.Data<String, Integer>(String.valueOf(date[i]), user3[i]));
+                series3.getData().add(new XYChart.Data<String, Integer>(String.valueOf(date.get(i)), user3.get(i)));
                 if (i + 1 == Integer.valueOf(txt_Piece.getText())) {
                     chart.getData().add(series3);
                 }
-            }*/
+            }
         }
-        
         chart.getData().add(series1);
-        chart.getData().add(series2);
     }
     
     public void DatePref()
@@ -231,7 +245,7 @@ public class ChartController {
     
     public void DailyAmount(String userName) {
         try {
-            String sql = "SELECT * FROM process WHERE userName = ?";
+            String sql = "select * from process where userName = ?";
             query = connection.prepareStatement(sql);
             query.setString(1, userName);
             result = query.executeQuery();

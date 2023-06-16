@@ -19,8 +19,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -133,7 +135,10 @@ public class OrderController {
 			//stage1.initStyle(StageStyle.UNDECORATED);
 			stage1.show();
 		} catch(Exception e) {
-			e.printStackTrace();
+			Alert alert=new Alert(AlertType.INFORMATION);
+			alert.setTitle("Sepet");
+			alert.setHeaderText("Henüz bir yemek eklemediniz.");
+			alert.showAndWait();
 		}
     }
     
@@ -250,7 +255,7 @@ public class OrderController {
     	    			try {
 		        			Stage stage1 = new Stage();
 		        			AnchorPane pane1 = (AnchorPane)FXMLLoader.load(getClass().getResource("Restaurant.fxml"));
-		        			Scene scene = new Scene(pane1);
+		        			Scene scene = new Scene(pane1,349,600);
 		        			stage1.setScene(scene);
 		        			//stage1.initStyle(StageStyle.UNDECORATED);
 		        			stage1.show();
@@ -299,7 +304,7 @@ public class OrderController {
     	try {
     		query=connection.prepareStatement(sql);
     		query.setString(1,"%"+txt_search.getText().trim()+"%");
-    		ResultSet result=query.executeQuery();
+    		result=query.executeQuery();
     		
     		
     		while(result.next() && i!=8)

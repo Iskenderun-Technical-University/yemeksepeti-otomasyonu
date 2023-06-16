@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="orderPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OrderController">
+<AnchorPane fx:id="orderPane" stylesheets="@application.css" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OrderController" >
 <children>
       <ImageView fx:id="img1" fitHeight="150.0" fitWidth="128.0" layoutX="75.0" layoutY="160.0" onMouseMoved="#img1_Moved" onMousePressed="#img1_Click" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="img5" fitHeight="150.0" fitWidth="128.0" layoutX="75.0" layoutY="397.0" onMouseMoved="#img5_Moved" onMousePressed="#img5_Click" pickOnBounds="true" preserveRatio="true" />

@@ -87,21 +87,21 @@ public class processPageController {
     		sql="select * from process where userName='"+combo_user.getValue()+"'";
     	if(date_start.getValue() != null && date_finish.getValue() == null){
     		if(combo_user.getSelectionModel().isEmpty())
-    			sql="select *from process where processDate > '"+date_start.getValue()+"'";
+    			sql="select * from process where processDate >= '"+date_start.getValue()+"'";
     		else
-    			sql="select *from process where processDate > '"+date_start.getValue()+"' and userName='"+combo_user.getValue()+"'";
+    			sql="select * from process where processDate >= '"+date_start.getValue()+"' and userName='"+combo_user.getValue()+"'";
     	}    		
     	if(date_start.getValue() == null && date_finish.getValue() != null){
     		if(combo_user.getSelectionModel().isEmpty())
-    			sql="select *from process where processDate < '"+date_finish.getValue()+"'";
+    			sql="select * from process where processDate <= '"+date_finish.getValue()+"'";
     		else
-    			sql="select *from process where processDate < '"+date_finish.getValue()+"' and userName='"+combo_user.getValue()+"'";
+    			sql="select * from process where processDate <= '"+date_finish.getValue()+"' and userName='"+combo_user.getValue()+"'";
     	}
     	if(date_start.getValue() != null && date_finish.getValue() != null){
     		if(combo_user.getSelectionModel().isEmpty())
-    			sql="select *from process where processDate > '"+date_start.getValue()+"' and processDate < '"+date_finish.getValue()+"'";
+    			sql="select * from process where processDate >= '"+date_start.getValue()+"' and processDate <= '"+date_finish.getValue()+"'";
     		else
-    			sql="select *from process where processDate > '"+date_start.getValue()+"' and processDate < '"+date_finish.getValue()+"' and userName='"+combo_user.getValue()+"'";
+    			sql="select * from process where processDate >= '"+date_start.getValue()+"' and processDate <= '"+date_finish.getValue()+"' and userName='"+combo_user.getValue()+"'";
     	}	
     	Select(sql);
     }
@@ -143,7 +143,7 @@ public class processPageController {
     public void ComboFill()
     {
     	connection=DatabaseUtil.Connect();
-    	sql="select userName from process";
+    	sql="select userName from login";
     	ObservableList<String> UsersList=FXCollections.observableArrayList();
     	try {
     		query=connection.prepareStatement(sql);

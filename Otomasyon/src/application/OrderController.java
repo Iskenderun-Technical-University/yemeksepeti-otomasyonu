@@ -120,7 +120,7 @@ public class OrderController {
     ResultSet result=null;
     String sql;
     
-    //ObservableList<CartClass> CartList=FXCollections.observableArrayList();
+
     static ObservableList<CartClass> Transfer=FXCollections.observableArrayList();
 	Button[] buttons=new Button[10];
     int buttonNo=0;
@@ -132,12 +132,11 @@ public class OrderController {
 			AnchorPane pane1 = (AnchorPane)FXMLLoader.load(getClass().getResource("Cart.fxml"));
 			Scene scene = new Scene(pane1);
 			stage1.setScene(scene);
-			//stage1.initStyle(StageStyle.UNDECORATED);
 			stage1.show();
 		} catch(Exception e) {
 			Alert alert=new Alert(AlertType.INFORMATION);
 			alert.setTitle("Sepet");
-			alert.setHeaderText("Henüz bir yemek eklemediniz.");
+			alert.setHeaderText("Henüz yemek eklemediniz.");
 			alert.showAndWait();
 		}
     }
@@ -242,7 +241,6 @@ public class OrderController {
     	try {
     		if(label[i].getText()!=null) 
         	{
-    			//connection=DatabaseUtil.Connect();
     	    	sql="select * from food where foodName='"+label[i].getText().trim()+"'";
     	  	
     	    	try {
@@ -299,7 +297,6 @@ public class OrderController {
 
     @FXML
     void txt_search_KeyPressed(KeyEvent event) {
-    	//connection=DatabaseUtil.Connect();
     	sql="select * from food where foodName like ?";    	
     	try {
     		query=connection.prepareStatement(sql);
@@ -326,16 +323,13 @@ public class OrderController {
     
     public void Fill()
     {
-    	//connection=DatabaseUtil.Connect();
     	sql="select * from food";
-    	//ObservableList<Food> FoodList=FXCollections.observableArrayList();
     	try {
     		query=connection.prepareStatement(sql);
     		ResultSet result=query.executeQuery();
     			
     		while(result.next() && i!=8)
     		{
-    			//FoodList.add(new Food(result.getInt("foodID"),result.getString("foodName"),result.getString("restaurantName"),result.getString("imageURL"),result.getDouble("price")));	
     			img[i].setImage(new Image("file:"+result.getString("imageURL")));
     			label[i].setText(result.getString("foodName"));
     			i++;

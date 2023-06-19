@@ -85,6 +85,8 @@ public class ChartController {
     ObservableList<Integer> user3 = FXCollections.observableArrayList();
     ObservableList<LocalDate> date = FXCollections.observableArrayList();
     
+    public static String userName;
+    
     Connection connection=null;
     PreparedStatement query=null;
     ResultSet result=null;
@@ -277,6 +279,10 @@ public class ChartController {
 	@FXML
     void initialize() {
 		connection=DatabaseUtil.Connect();
+		if(userName!=null)
+		{
+			AddUser(userName);
+		}
 	}
 
 }

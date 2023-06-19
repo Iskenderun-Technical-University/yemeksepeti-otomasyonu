@@ -48,7 +48,7 @@ public class HompageController {
     
     @FXML
     void img_foodLists_Moved(MouseEvent event) {
-    	//img_foodLists.setCursor(Cursor.HAND);
+    	img_foodLists.setCursor(Cursor.HAND);
     }
     
     @FXML
@@ -88,7 +88,7 @@ public class HompageController {
 
     @FXML
     void img_foodLists_Click(MouseEvent event) {
-    	
+    	GoStage("Food.fxml");
     }
 
     @FXML
@@ -113,6 +113,8 @@ public class HompageController {
     
     public void GoStage(String fxmlSource)
     {
+    	if(fxmlSource=="Chart.fxml")
+    		ChartController.userName=null;
     	try {
 			Stage stage1 = new Stage();
 			AnchorPane pane1 = (AnchorPane)FXMLLoader.load(getClass().getResource(fxmlSource));

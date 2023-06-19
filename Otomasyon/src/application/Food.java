@@ -3,7 +3,13 @@ package application;
 
 public class Food {
 	private int foodID;
-	private String foodName,restaurantName,imageURL;
+	private String foodName,restaurantName,imageURL,extra;
+	public String getExtra() {
+		return extra;
+	}
+	public void setExtra(String extra) {
+		this.extra = extra;
+	}
 	private double price;
 	
 	Food(){}
@@ -14,6 +20,15 @@ public class Food {
 		this.restaurantName=restaurantName;
 		this.imageURL=imageURL;
 		this.price=price;
+	}
+	Food(int foodID,String foodName,String restaurantName,double price,String extra,String imageURL)
+	{
+		this.foodID=foodID;
+		this.foodName=foodName;
+		this.restaurantName=restaurantName;
+		this.imageURL=imageURL;
+		this.price=price;
+		this.extra=extra;
 	}
 	public String getImageURL() {
 		return imageURL;

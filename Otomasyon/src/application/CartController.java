@@ -130,7 +130,7 @@ public class CartController {
     {
     	if(list.size()==0) 
     	{
-    		System.out.println("Girdi");
+    		
     	}
     	else
     	{

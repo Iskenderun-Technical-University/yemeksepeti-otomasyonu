@@ -22,15 +22,23 @@ public class DatabaseUtil {
 		}
 	}
 	
-	public static void Select()
-	{
-
-	}
-	
-	public static void Delete(Integer userID)
+	public static void Select(String sql,int userID)
 	{
 		connection=DatabaseUtil.Connect();
-		String sql="delete from login where userID=?";
+		try {
+    		query=connection.prepareStatement(sql);
+    		query.setInt(1, userID);
+    		query.executeQuery();
+    		
+			} catch (Exception e) {
+    		System.out.println(e.getMessage().toString());
+    	}
+	}
+	
+	public static void Delete(Integer userID,String sql)
+	{
+		connection=DatabaseUtil.Connect();
+
 		
 		try {
     		query=connection.prepareStatement(sql);

@@ -9,6 +9,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -18,6 +20,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.sql.*;
 
@@ -105,7 +109,7 @@ public class AdminController {
     	
     	try {
     		query=connection.prepareStatement(sql);
-    		ResultSet result=query.executeQuery();
+    		result=query.executeQuery();
     		while(result.next()) {
     			UsersList.add(new Users(result.getInt("userID"),result.getInt("title"),result.getString("userName"),result.getString("password"),buttons[buttonNo],result.getString("adress")));
     			buttonNo++;
@@ -129,7 +133,7 @@ public class AdminController {
 
     @FXML
     void btn_delete_Click(ActionEvent event) {
-    	DatabaseUtil.Delete(Integer.valueOf(txt_ID.getText().trim()));
+    	DatabaseUtil.Delete(Integer.valueOf(txt_ID.getText().trim()),"delete from login where userID=?");
     }
 
     @FXML
@@ -177,6 +181,22 @@ public class AdminController {
     		System.out.println(e.getMessage().toString());
     	}
     }
+    
+    public void GoChart(String userName)
+    {
+    	ChartController.userName=userName;
+    	try {
+			Stage stage1 = new Stage();
+			AnchorPane pane1 = (AnchorPane)FXMLLoader.load(getClass().getResource("Chart.fxml"));
+			Scene scene = new Scene(pane1);
+			stage1.setScene(scene);
+			//ChartController.userName=userName;
+			stage1.show();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    }
 
     @FXML
     void tableview_Admin_Click(MouseEvent event) {
@@ -209,7 +229,7 @@ public class AdminController {
     void Button(ActionEvent event) {
     	for(int i=0; i<buttons.length; i++) {
     		if(event.getSource()==buttons[i]) {
-    			System.out.println(i+". butona tıklandı.");
+    			GoChart(tableview_Admin.getItems().get(i).getUserName());
     		}
         }
     }
